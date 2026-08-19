@@ -53,6 +53,9 @@ function App() {
 
   const sortLetters = letters.sort((a, b) => b.amount - a.amount)
 
+  const [showAll, setShowAll] = useState(false)
+
+  const visibleLetters = showAll ?  sortLetters : sortLetters.slice(0, 5)
 
 
 
@@ -110,9 +113,11 @@ function App() {
 
     <section>
       <h2>Letter Density</h2>
+
+
       <article>
          {
-         sortLetters.map(letter =>
+         visibleLetters.map(letter =>
           <div key={letter.letterName}>
             <span>{letter.letterName.toLocaleUpperCase()}</span>
             <meter min= "0" max= "100" value={letter.percentage}></meter>
@@ -120,7 +125,15 @@ function App() {
           </div>)
          }
       </article>
-      <button>See more ▼</button>
+
+
+      <button onClick={()=>setShowAll(!showAll)}
+        >{showAll ? "See less ▲": "See more ▼"  }
+      </button>
+
+
+
+
     </section>
 
 
