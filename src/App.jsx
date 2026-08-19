@@ -1,5 +1,9 @@
 import { useState } from "react"
 import { Header } from "./components/Header.jsx"
+import { WriteArea } from "./components/WriteArea.jsx"
+import { Controls } from "./components/Controls.jsx"
+import { Stats } from "./components/Stats.jsx"
+import { LetterDensity } from "./components/LetterDensity.jsx"
 
 
 function App() {
@@ -31,11 +35,9 @@ function App() {
 
   const total = cleanText.length
 
-
   cleanText.split("").forEach(letter =>{
     dictionaryLetters[letter]= (dictionaryLetters[letter] || 0) + 1
   })
-
 
   const letters = Object.entries(dictionaryLetters).map(dataLetter => {
     const letter = dataLetter[0]
@@ -44,7 +46,7 @@ function App() {
     const infoToRenderLetter = {
       letterName: letter,
       amount: amountLetter,
-      percentage: (amountLetter / total) * 100,
+      percentage: total === 0 ? 0 : (amountLetter / total) * 100
     }
 
     return infoToRenderLetter
@@ -57,89 +59,51 @@ function App() {
 
   const visibleLetters = showAll ?  sortLetters : sortLetters.slice(0, 5)
 
+  const handleExcludeSpaces = () => {
+    setExcludeSpaces(!excludeSpaces)
+  }
 
+  const handleLimitValue = () => {
+    setLimitValue(!limitValue)
+  }
 
-
-
-
-
+  const handleShowAll = () => {
+    setShowAll(!showAll)
+  }
 
   return (
   <main>
 
-    <header/>
+    <Header/>
 
-    <h2>Analyze your text <br /> in real-time.</h2>
+    <h2>Analyze your text <br /> in real-time.</h2> 
 
-    <textarea 
-    placeholder="Write your text..."
-    onChange={handleChangeTextArea}
-    value={text}
-    ></textarea>
+    <WriteArea
+      handleChangeTextArea={handleChangeTextArea}
+      text={text}
+    />
 
-    <div>
-      <label>
-      <input type="checkbox"
-      checked= {excludeSpaces}
-      onChange={() => setExcludeSpaces(!excludeSpaces)}
-      />
-      Exclude Spaces
-      </label>
-      <label>
-      <input type="checkbox"
-      checked= {limitCharacter}
-      onChange={handleChangeInputLimit}
-      />
-      Set Character Limit
-      </label>
-      {
-        limitCharacter && 
-        <input type="number"
-        value={limitValue}
-        onChange = {(e) => setLimitValue(e.target.value)}
-         />
-      }
+    <Controls
+      excludeSpaces = {excludeSpaces}
+      handleExcludeSpaces = {handleExcludeSpaces}
+      limitCharacter = {limitCharacter}
+      handleChangeInputLimit = {handleChangeInputLimit}
+      limitValue = {limitValue}
+      handleLimitValue = {handleLimitValue}
+    />
 
+    <Stats
+    characters = {characters} 
+    words = {words}
+    sentences = {sentences}
+    readingTime = {readingTime}
+    />
 
-
-
-    </div>
-
-    <p>Total Characters: {characters} </p>
-    <p>Total Words: {words}</p>
-    <p>Total Sentences: {sentences}</p>
-
-    <p>Reading Time: &lt;{readingTime} min</p>
-
-    <section>
-      <h2>Letter Density</h2>
-
-
-      <article>
-         {
-         visibleLetters.map(letter =>
-          <div key={letter.letterName}>
-            <span>{letter.letterName.toLocaleUpperCase()}</span>
-            <meter min= "0" max= "100" value={letter.percentage}></meter>
-            <span>{letter.amount} ({letter.percentage.toFixed(1)} %)</span>
-          </div>)
-         }
-      </article>
-
-
-      <button onClick={()=>setShowAll(!showAll)}
-        >{showAll ? "See less ▲": "See more ▼"  }
-      </button>
-
-
-
-
-    </section>
-
-
-
-
-    
+    <LetterDensity
+    visibleLetters={visibleLetters}
+    handleShowAll={handleShowAll}
+    showAll={showAll}
+    />
   </main>
   )
 }
