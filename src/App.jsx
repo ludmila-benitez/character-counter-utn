@@ -25,6 +25,7 @@ function App() {
   }
   const words = text.trim() === "" ? 0 : text.trim().split(/\s+/).length
   const sentences = text.trim() === "" ? 0 : text.split(/[.!?]+/).filter(sentence => sentence.trim() != "").length
+  const readingTime = Math.ceil(words / 200) 
 
 
   return (
@@ -71,6 +72,8 @@ function App() {
     <p>Total Characters: {characters} </p>
     <p>Total Words: {words}</p>
     <p>Total Sentences: {sentences}</p>
+
+    <p>Reading Time: &lt;{readingTime} min</p>
 
 
 
