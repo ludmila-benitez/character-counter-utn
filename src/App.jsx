@@ -23,7 +23,8 @@ function App() {
     const newText = text.slice(0, limitValue)
     setText(newText)
   }
-
+  const words = text.trim() === "" ? 0 : text.trim().split(/\s+/).length
+  const sentences = text.trim() === "" ? 0 : text.split(/[.!?]+/).filter(sentence => sentence.trim() != "").length
 
 
   return (
@@ -68,6 +69,8 @@ function App() {
     </div>
 
     <p>Total Characters: {characters} </p>
+    <p>Total Words: {words}</p>
+    <p>Total Sentences: {sentences}</p>
 
 
 
