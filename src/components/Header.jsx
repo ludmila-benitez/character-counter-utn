@@ -1,5 +1,5 @@
 const Header = () => {
-    return 
+    return (
     <header>
       <div>
         <p>C</p>
@@ -7,6 +7,7 @@ const Header = () => {
       </div>
       <button>☀︎</button>
     </header>
+    )
 }
 
 export { Header }
