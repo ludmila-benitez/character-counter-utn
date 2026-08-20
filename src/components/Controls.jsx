@@ -1,10 +1,11 @@
 const Controls = (
-    excludeSpaces,
+{    excludeSpaces,
     handleExcludeSpaces,
     limitCharacter,
     handleChangeInputLimit,
     limitValue,
-    handleLimitValue) => {
+    handleLimitValue, 
+    readingTime}) => {
     return(
     <div>
       <label>
@@ -28,6 +29,7 @@ const Controls = (
         onChange = {(e) => handleLimitValue(Number(e.target.value))}
          />
       }
+      <p>Reading Time: &lt;{readingTime} min</p>
     </div>
     )
 }

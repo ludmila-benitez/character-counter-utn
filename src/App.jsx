@@ -4,7 +4,7 @@ import { WriteArea } from "./components/WriteArea.jsx"
 import { Controls } from "./components/Controls.jsx"
 import { Stats } from "./components/Stats.jsx"
 import { LetterDensity } from "./components/LetterDensity.jsx"
-
+import "./index.css"
 
 function App() {
   const [text, setText] = useState("Design is the silent ambassador of your brand. Simplicity is key to effective communication, creating clarity in every interaction. A great design transforms complex ideas into elegant solutions, making them easy to understand. It blends aesthetics and functionality seamlessly.")
@@ -74,37 +74,43 @@ function App() {
   return (
   <main>
 
-    <Header/>
+    <section className="card">
 
-    <h2>Analyze your text <br /> in real-time.</h2> 
+      <Header/>
 
-    <WriteArea
-      handleChangeTextArea={handleChangeTextArea}
-      text={text}
-    />
+      <h2 className="title">Analyze your text in real-time.</h2> 
 
-    <Controls
-      excludeSpaces = {excludeSpaces}
-      handleExcludeSpaces = {handleExcludeSpaces}
-      limitCharacter = {limitCharacter}
-      handleChangeInputLimit = {handleChangeInputLimit}
-      limitValue = {limitValue}
-      handleLimitValue = {handleLimitValue}
-    />
+      <WriteArea className="write-area"
+        handleChangeTextArea={handleChangeTextArea}
+        text={text}
+      />
 
-    <Stats
-    characters = {characters} 
-    words = {words}
-    sentences = {sentences}
-    readingTime = {readingTime}
-    />
+      <Controls
+        excludeSpaces = {excludeSpaces}
+        handleExcludeSpaces = {handleExcludeSpaces}
+        limitCharacter = {limitCharacter}
+        handleChangeInputLimit = {handleChangeInputLimit}
+        limitValue = {limitValue}
+        handleLimitValue = {handleLimitValue}
+        readingTime = {readingTime}
+      />
 
-    <LetterDensity
-    visibleLetters={visibleLetters}
-    handleShowAll={handleShowAll}
-    showAll={showAll}
-    />
+      <Stats
+      characters = {characters} 
+      words = {words}
+      sentences = {sentences}
+      />
+
+      <LetterDensity
+      visibleLetters={visibleLetters}
+      handleShowAll={handleShowAll}
+      showAll={showAll}
+      />
+    
+    </section>
+
   </main>
+
   )
 }
 
