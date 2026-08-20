@@ -20,7 +20,6 @@
 }
 
 main{
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,7 +40,6 @@ Header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 600px;
     height: 50px;
     font-size: 14px;
     color:#F2F2F7;
@@ -96,6 +94,144 @@ textarea::placeholder{
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
+}
+
+.controls {
+    font-size: 14px;
+    color: #F2F2F7;
+    font-weight: 300;
+    display:flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.controls input[type="checkbox"] {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: var(--card-background);
+    border: 1px solid var(--primary-text);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--primary-text);
+}
+
+.check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.limit {
+  width: 50px;
+  text-align: center;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.total{
+    background-image: url(./assets/img-purple.png);
+}
+
+.word{
+    background-image: url(./assets/img-orange.png);
+}
+
+.sentence{
+    background-image: url(./assets/img-red.png);
+}
+
+.total, .word, .sentence{
+    background-size: cover;
+    background-position: center;
+    height: 120px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    color: var(--primary-background);
+    padding: 10px;
+}
+
+.description{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.number {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.letter-density{
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px 0px 20px 0;
+    gap: 20px;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.statistics{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.statistics div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+meter{
+    height: 20px;
+    width: 480px;
+}
+
+meter::-webkit-meter-bar {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    border: none;
+}
+
+meter::-webkit-meter-optimum-value {
+    background-color: var(--progress-bar);
+    border-radius: 10px;
+}
+
+.letter-density button{
+    text-align: start;
+    background-color: var(--primary-background);
+    font-size: 16px;
+    color: var(--primary-text);
+    border: none;
+    cursor: pointer
+}
+
+.letter-density button:hover {
+    color: var(--progress-bar);
 }
 
 

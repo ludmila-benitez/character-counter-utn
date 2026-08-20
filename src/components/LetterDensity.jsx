@@ -1,8 +1,8 @@
 const LetterDensity = ({visibleLetters, handleShowAll, showAll}) => {
     return(
-    <section>
-      <h2>Letter Density</h2>
-      <article>
+    <section className="letter-density">
+      <h3>Letter Density</h3>
+      <article className="statistics">
          {
          visibleLetters.map(letter =>
           <div key={letter.letterName}>
